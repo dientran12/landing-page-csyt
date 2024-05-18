@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar with Dropdown</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <style>
+        body,
+        html {
+            overflow-x: hidden;
+        }
+
+        .active {
+            border-bottom: 2px solid #1D4ED8;
+            /* Màu xanh đậm */
+        }
+
+        .transition-max-height {
+            transition: max-height 0.5s ease-out;
+            overflow: hidden;
+        }
+
+        .max-h-0 {
+            max-height: 0;
+        }
+
+        .max-h-full {
+            max-height: 400px;
+            /* Bạn có thể điều chỉnh giá trị này tùy vào nội dung menu */
+        }
+
+        .text-shadow-white {
+            text-shadow: 1px 1px 10px white;
+
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: left;
+            /* opacity: 0.4; */
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="bg-black text-white sm:text-black sm:bg-white sm:bg-white/70 p-4 fixed top-0 w-full z-50">
+        <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
+            <!-- Logo -->
+            <div class="flex justify-between items-center w-full sm:w-auto">
+                <div class="text-xl font-bold">DienTran</div>
+                <!-- Menu Button (Mobile) -->
+                <div class="sm:hidden">
+                    <button id="menu-button" class="focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Menu Items -->
+            <div id="menu-items"
+                class="hidden sm:flex sm:space-x-4 flex-col sm:flex-row sm:items-center w-full sm:w-auto transition-max-height ease-in-out max-h-0 overflow-hidden">
+                <a href="#home" class="nav-link hover:text-blue-400 block px-4 py-2">Trang Chủ</a>
+                <a href="#about" class="nav-link hover:text-blue-400 block px-4 py-2">Giới Thiệu</a>
+                <a href="#department" class="nav-link hover:text-blue-400 block px-4 py-2">Phòng Ban</a>
+                <a href="#doctors" class="nav-link hover:text-blue-400 block px-4 py-2">Bác Sĩ</a>
+                <a href="#blog" class="nav-link hover:text-blue-400 block px-4 py-2">Blog</a>
+                <a href="#contact" class="nav-link hover:text-blue-400 block px-4 py-2">Liên Hệ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="relative flex  items-end h-50 h-screen bg-cover bg-top sm:bg-center " data-aos="zoom-in"
+        style="background-image: url('public/assets/image/home-langding.jpg');">
+        <div
+            class="relative z-10 sm:ml-10 md:ml-30 max-w-2xl flex flex-col items-end sm:items-start justify-center h-fit sm:mb-80 p-4 sm:p-8 text-black content">
+            <h1 class="text-2xl sm:text-6xl font-bold mb-6 w-3/4 sm:w-full sm:mb-6 text-shadow-white">Chúng tôi ở đây vì
+                sức khỏe
+                của bạn</h1>
+            <p class=" hidden sm:block text-md sm:text-lg mb-8 text-shadow">Tại DienTran, chúng tôi cam kết cung cấp
+                dịch vụ y tế chất
+                lượng cao
+                và
+                tận tâm. Đội ngũ chuyên gia của chúng tôi luôn sẵn sàng hỗ trợ bạn trong mọi nhu cầu chăm sóc sức khỏe.
+            </p>
+            <a href="#contact"
+                class="bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">Đặt
+                lịch hẹn</a>
+        </div>
+    </section>
+
+    <!-- Sections -->
+    <section id="about" class=" bg-white py-8  items-center justify-center">
+        <div class="lg:mx-20 2xl:mx-auto max-w-5xl flex flex-col md:flex-row">
+            <div class="min-w-xl   mb-8 md:mb-0 px-4 sm:p-0 h-4/5">
+                <img src="public/assets/image/image_gioithieu.jpg" class="w-full h-4/5 object-cover" alt="Doctor">
+            </div>
+            <div class="md:text-left sm:ml-8 sm:mt-8 px-4 sm:px-0">
+                <h2 class="text-2xl sm:text-3xl sm:text-5xl font-bold mb-4 sm:mb-10 " data-aos="fade-up">Chúng tôi là
+                    <span class="text-blue-600">DienTran</span>, một phòng khám y tế
+                </h2>
+                <p class="text-md sm:text-xl mb-6 text-slate-600" data-aos="fade-up">DienTran cung cấp các dịch vụ y tế
+                    chất lượng cao.
+                    Chúng tôi cam kết
+                    mang lại sự chăm sóc tận tâm và chuyên nghiệp. Đội ngũ bác sĩ và nhân viên của chúng tôi luôn sẵn
+                    sàng để hỗ trợ bạn.</p>
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-2 text-center ">
+                    <a href="#contact" data-aos="fade-left"
+                        class=" bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">Đặt
+                        lịch hẹn</a>
+                    <a href="#contact" data-aos="fade-right"
+                        class="bg-red-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-red-700 transition duration-300">Liên
+                        hệ</a>
+                </div>
+            </div>
+        </div>
+        <div class=" bg-gray-100 mt-10">
+            <div class="container mx-auto  px-4 py-8">
+                <h2 class="text-2xl  font-bold mb-8">Dịch Vụ Của Chúng Tôi</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="flex flex-row items-start" data-aos="fade-right">
+                        <div
+                            class="flex-none w-14 h-14 rounded-full flex justify-center items-center bg-red-100 ring ring-slate-100 ring-offset-2 ">
+                            <i class="fa-solid fa-truck-medical fa-xl text-red-400 "></i>
+                        </div>
+                        <div class="ml-3 ">
+                            <h3 class="text-xl font-semibold mb-2">Dịch Vụ Khẩn Cấp</h3>
+                            <p class="text-gray-600">Chúng tôi cung cấp dịch vụ khẩn cấp 24/7 để đảm bảo sự an toàn của
+                                bạn.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-row items-start" data-aos="zoom-in">
+                        <div
+                            class="flex-none w-14 h-14 rounded-full flex justify-center items-center bg-cyan-100 ring ring-slate-100 ring-offset-2 ">
+                            <i class="fa-solid fa-user-md fa-xl text-red-400"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-xl font-semibold mb-2">Bác Sĩ Chuyên Nghiệp</h3>
+                            <p class="text-gray-600">Đội ngũ bác sĩ của chúng tôi đều là những chuyên gia hàng đầu trong
+                                lĩnh vực y tế.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-row items-start" data-aos="zoom-in">
+                        <div
+                            class="flex-none  w-14 h-14 rounded-full flex justify-center items-center bg-yellow-200 ring ring-slate-100 ring-offset-2 ">
+
+                            <i class="fa-solid fa-stethoscope fa-xl text-red-400"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-xl font-semibold mb-2">Kiểm Tra Ngoài Trời</h3>
+                            <p class="text-gray-600">Chúng tôi cung cấp các dịch vụ kiểm tra sức khỏe ngoài trời cho
+                                cộng
+                                đồng.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-row items-start" data-aos="fade-left">
+                        <div
+                            class="flex-none  w-14 h-14 rounded-full flex justify-center items-center bg-green-200 ring ring-slate-100 ring-offset-2 ">
+
+                            <i class="fa-solid fa-clock fa-xl text-red-400"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-xl font-semibold mb-2">Dịch Vụ 24 Giờ</h3>
+                            <p class="text-gray-600">Chúng tôi luôn sẵn sàng phục vụ bạn mọi lúc, mọi nơi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Priority Section -->
+        <div class="relative h-[500px] bg-cover bg-center flex items-center justify-center"
+            style="background-image: url('public/assets/image/home-langding.jpg');">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="relative z-10 text-center text-white p-8">
+                <h1 class="text-2xl md:text-6xl font-bold mb-2 sm:mb-6">Sức Khỏe Của Bạn Là Ưu Tiên Của Chúng Tôi</h1>
+                <p class="text-md sm:text-xl mb-8">Chúng tôi luôn sẵn sàng chăm sóc sức khỏe của bạn bằng dịch vụ tốt
+                    nhất.</p>
+                <a href="#"
+                    class="bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-gray-200 transition duration-300">Tìm
+                    kiếm Địa điểm</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="department" class="bg-white py-8 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center">Phòng Ban</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div data-aos="fade-right"
+                    class="p-6 shadow-lg rounded-lg bg-white hover:bg-blue-500  hover:text-white transition duration-300 group">
+                    <div
+                        class="flex justify-center items-center w-14 h-14 rounded-full bg-red-100 group-hover:bg-red-500 transition duration-300">
+                        <i class="fas fa-brain fa-2x text-blue-500 group-hover:text-white transition duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Thần Kinh</h3>
+                    <p class="text-gray-600 group-hover:text-white">Chuyên điều trị các bệnh lý thần kinh như đau đầu,
+                        động kinh, Parkinson và các rối loạn thần kinh khác.</p>
+                </div>
+                <div
+                    class="p-6 shadow-lg rounded-lg bg-white hover:bg-blue-500 hover:text-white transition duration-300 group">
+                    <div
+                        class="flex justify-center items-center w-14 h-14 rounded-full bg-cyan-100 group-hover:bg-cyan-500 transition duration-300">
+                        <i class="fas fa-eye fa-2x text-blue-500 group-hover:text-white transition duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Nhãn Khoa</h3>
+                    <p class="text-gray-600 group-hover:text-white">Chăm sóc và điều trị các bệnh về mắt, bao gồm khám
+                        mắt, phẫu thuật mắt và điều chỉnh thị lực.</p>
+                </div>
+                <div data-aos="fade-left"
+                    class="p-6 shadow-lg rounded-lg bg-white hover:bg-blue-500 hover:text-white transition duration-300 group">
+                    <div
+                        class="flex justify-center items-center w-14 h-14 rounded-full bg-yellow-200 group-hover:bg-yellow-500 transition duration-300">
+                        <i class="fas fa-x-ray fa-2x text-blue-500 group-hover:text-white transition duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Hạt Nhân Từ</h3>
+                    <p class="text-gray-600 group-hover:text-white">Sử dụng kỹ thuật hạt nhân trong chẩn đoán và điều
+                        trị bệnh, bao gồm xạ trị và chụp ảnh y học hạt nhân.</p>
+                </div>
+                <div data-aos="fade-right"
+                    class="p-6 shadow-lg rounded-lg bg-white hover:bg-blue-500 hover:text-white transition duration-300 group">
+                    <div
+                        class="flex justify-center items-center w-14 h-14 rounded-full bg-red-200 group-hover:bg-red-500 transition duration-300">
+                        <i
+                            class="fas fa-syringe fa-2x text-blue-500 group-hover:text-white transition duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Phẫu Thuật</h3>
+                    <p class="text-gray-600 group-hover:text-white">Thực hiện các ca phẫu thuật từ đơn giản đến phức
+                        tạp, bao gồm phẫu thuật nội soi và phẫu thuật mở.</p>
+                </div>
+                <div
+                    class="p-6 shadow-lg rounded-lg bg-white hover:bg-blue-500 hover:text-white transition duration-300 group">
+                    <div
+                        class="flex justify-center items-center w-14 h-14 rounded-full bg-pink-200 group-hover:bg-pink-500 transition duration-300">
+                        <i
+                            class="fas fa-heartbeat fa-2x text-blue-500 group-hover:text-white transition duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Tim Mạch</h3>
+                    <p class="text-gray-600 group-hover:text-white">Chuyên điều trị các bệnh về tim mạch, bao gồm kiểm
+                        tra, chẩn đoán và điều trị các bệnh lý tim mạch.</p>
+                </div>
+                <div data-aos="fade-left"
+                    class="p-6 shadow-lg rounded-lg bg-white hover:bg-blue-500 hover:text-white transition duration-300 group">
+                    <div
+                        class="flex justify-center items-center w-14 h-14 rounded-full bg-green-200 group-hover:bg-green-500 transition duration-300">
+                        <i class="fas fa-x-ray fa-2x text-blue-500 group-hover:text-white transition duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">X-quang</h3>
+                    <p class="text-gray-600 group-hover:text-white">Cung cấp dịch vụ chụp X-quang, CT scan và MRI để
+                        chẩn đoán và điều trị các bệnh lý.</p>
+                </div>
+                <div data-aos="fade-right"
+                    class="p-6 shadow-lg rounded-lg bg-white hover:bg-blue-500 hover:text-white transition duration-300 group">
+                    <div
+                        class="flex justify-center items-center w-14 h-14 rounded-full bg-purple-200 group-hover:bg-purple-500 transition duration-300">
+                        <i class="fas fa-tooth fa-2x text-blue-500 group-hover:text-white transition duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Nha Khoa</h3>
+                    <p class="text-gray-600 group-hover:text-white">Chăm sóc răng miệng, bao gồm điều trị sâu răng, tẩy
+                        trắng răng và phẫu thuật nha khoa.</p>
+                </div>
+                <div
+                    class="p-6 shadow-lg rounded-lg bg-white hover:bg-blue-500 hover:text-white transition duration-300 group">
+                    <div
+                        class="flex justify-center items-center w-14 h-14 rounded-full bg-orange-200 group-hover:bg-orange-500 transition duration-300">
+                        <i
+                            class="fas fa-ambulance fa-2x text-blue-500 group-hover:text-white transition duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Chấn Thương</h3>
+                    <p class="text-gray-600 group-hover:text-white">Điều trị các chấn thương do tai nạn, bao gồm gãy
+                        xương, tổn thương mô mềm và phục hồi chức năng.</p>
+                </div>
+                <div data-aos="fade-left"
+                    class="p-6 shadow-lg rounded-lg bg-white hover:bg-blue-500 hover:text-white transition duration-300 group">
+                    <div
+                        class="flex justify-center items-center w-14 h-14 rounded-full bg-teal-200 group-hover:bg-teal-500 transition duration-300">
+                        <i
+                            class="fas fa-heartbeat fa-2x text-blue-500 group-hover:text-white transition duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Tim Mạch</h3>
+                    <p class="text-gray-600 group-hover:text-white">Chuyên điều trị các bệnh về tim mạch, bao gồm kiểm
+                        tra, chẩn đoán và điều trị các bệnh lý tim mạch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="doctors" class="bg-gray-100 py-16 ">
+        <div class="container mx-auto px-4 " data-aos="zoom-out">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center">Bác Sĩ Của Chúng Tôi</h2>
+            <p class="text-center text-gray-600 mb-8">Đội ngũ bác sĩ chuyên nghiệp và tận tâm của chúng tôi luôn sẵn
+                sàng phục vụ bạn.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+                <!-- Doctor 1 -->
+                <div
+                    class="bg-white shadow-lg max-w-sm mx-auto overflow-hidden rounded-lg flex flex-col justify-between">
+                    <img src="public/assets/image/doctor1.jpg" alt="Dr. Lloyd Wilson"
+                        class="w-full h-64 object-cover rounded-t-lg mb-4 transition-transform duration-300 transform hover:scale-110">
+                    <div class="p-6 flex flex-col">
+                        <div class="text-center">
+                            <h3 class="text-xl font-semibold mb-2">Dr. Lloyd Wilson</h3>
+                            <p class="text-blue-600 mb-4">Thần Kinh</p>
+                            <p class="text-gray-600 mb-4">Bác sĩ Lloyd Wilson là chuyên gia hàng đầu trong lĩnh vực thần
+                                kinh, với nhiều năm kinh nghiệm trong điều trị các bệnh lý phức tạp.</p>
+                        </div>
+                        <div class="text-end mt-4">
+                            <a href="#contact"
+                                class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">Đặt
+                                lịch hẹn</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Doctor 2 -->
+                <div
+                    class="bg-white shadow-lg max-w-sm mx-auto overflow-hidden rounded-lg flex flex-col justify-between">
+                    <img src="public/assets/image/doctor2.jpg" alt="Dr. Rachel Parker"
+                        class="w-full h-64 object-cover rounded-t-lg mb-4 transition-transform duration-300 transform hover:scale-110">
+                    <div class="p-6 flex flex-col">
+                        <div class="text-center">
+                            <h3 class="text-xl font-semibold mb-2">Dr. Rachel Parker</h3>
+                            <p class="text-blue-600 mb-4">Nhãn Khoa</p>
+                            <p class="text-gray-600 mb-4">Bác sĩ Rachel Parker chuyên điều trị các bệnh về mắt, bao gồm
+                                phẫu thuật và điều chỉnh thị lực.</p>
+                        </div>
+                        <div class="text-end mt-4">
+                            <a href="#contact"
+                                class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">Đặt
+                                lịch hẹn</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Doctor 3 -->
+                <div
+                    class="bg-white shadow-lg max-w-sm mx-auto overflow-hidden rounded-lg flex flex-col justify-between">
+                    <img src="public/assets/image/doctor3.jpg" alt="Dr. Ian Smith"
+                        class="w-full h-64 object-cover rounded-t-lg mb-4 transition-transform duration-300 transform hover:scale-110">
+                    <div class="p-6 flex flex-col">
+                        <div class="text-center">
+                            <h3 class="text-xl font-semibold mb-2">Dr. Ian Smith</h3>
+                            <p class="text-blue-600 mb-4">Nha Khoa</p>
+                            <p class="text-gray-600 mb-4">Bác sĩ Ian Smith là chuyên gia về nha khoa, mang lại nụ cười
+                                tự tin cho bệnh nhân qua các dịch vụ chăm sóc răng miệng toàn diện.</p>
+                        </div>
+                        <div class="text-end mt-4">
+                            <a href="#contact"
+                                class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">Đặt
+                                lịch hẹn</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Doctor 4 -->
+                <div
+                    class="bg-white shadow-lg max-w-sm mx-auto overflow-hidden rounded-lg flex flex-col justify-between">
+                    <img src="public/assets/image/doctor4.jpg" alt="Dr. Alicia Henderson"
+                        class="w-full h-64 object-cover rounded-t-lg mb-4 transition-transform duration-300 transform hover:scale-110">
+                    <div class="p-6 flex flex-col">
+                        <div class="text-center">
+                            <h3 class="text-xl font-semibold mb-2">Dr. Alicia Henderson</h3>
+                            <p class="text-blue-600 mb-4">Nhi Khoa</p>
+                            <p class="text-gray-600 mb-4">Bác sĩ Alicia Henderson chuyên chăm sóc sức khỏe cho trẻ em,
+                                với nhiều năm kinh nghiệm và tình yêu thương trẻ nhỏ.</p>
+                        </div>
+                        <div class="text-end mt-4">
+                            <a href="#contact"
+                                class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">Đặt
+                                lịch hẹn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class=" mx-auto bg-blue-500">
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center  text-white py-16 px-4">
+                <div>
+                    <h3 class="text-lg uppercase mb-4">Fun Facts</h3>
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-4">Hơn 5,100 bệnh nhân tin tưởng chúng tôi</h2>
+                    <p class="text-lg mb-8">Chúng tôi đã xây dựng một sự tin tưởng lớn từ phía bệnh nhân qua các dịch vụ
+                        y
+                        tế chất lượng cao.</p>
+                    <a href="#contact"
+                        class="bg-red-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-red-700 transition duration-300">Đặt
+                        lịch hẹn</a>
+                </div>
+                <div class="grid grid-cols-2 gap-4 text-center">
+                    <div>
+                        <h4 class="text-4xl font-bold">30</h4>
+                        <p>Năm kinh nghiệm</p>
+                    </div>
+                    <div>
+                        <h4 class="text-4xl font-bold">4,500</h4>
+                        <p>Bệnh nhân hài lòng</p>
+                    </div>
+                    <div>
+                        <h4 class="text-4xl font-bold">84</h4>
+                        <p>Số lượng bác sĩ</p>
+                    </div>
+                    <div>
+                        <h4 class="text-4xl font-bold">300</h4>
+                        <p>Số lượng nhân viên</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="blog" class="bg-gray-100 py-16 px-4">
+        <div class=" mx-auto max-w-6xl">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center">Nhận Mọi Cập Nhật Tại Đây</h2>
+            <p class="text-center text-gray-600 mb-12">Cập nhật những tin tức và sự kiện mới nhất từ chúng tôi</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="bg-white p-6 shadow-lg rounded-lg flex flex-col justify-between">
+                    <div>
+                        <img src="public/assets/image/blog1.jpg" alt="Blog Image 1"
+                            class="w-full h-64 object-cover rounded-lg mb-4">
+                        <div class="text-sm text-gray-600 mb-2">9 tháng 6, 2019 | Admin | 3 bình luận</div>
+                        <h3 class="text-xl font-semibold mb-2">Điều Đáng Sợ Khi Bạn Không Ngủ Đủ Giấc</h3>
+                        <p class="text-gray-600 mb-4">Xa xa, phía sau những ngọn núi chữ, từ các quốc gia Vokalia và
+                            Consonantia, nơi những văn bản mù sống.</p>
+                    </div>
+                    <a href="#read-more"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 mt-4 self-start">Đọc
+                        thêm</a>
+                </div>
+                <!-- Blog Post 2 -->
+                <div class="bg-white p-6 shadow-lg rounded-lg flex flex-col justify-between">
+                    <div>
+                        <img src="public/assets/image/blog2.jpg" alt="Blog Image 2"
+                            class="w-full h-64 object-cover rounded-lg mb-4">
+                        <div class="text-sm text-gray-600 mb-2">15 tháng 7, 2019 | Admin | 5 bình luận</div>
+                        <h3 class="text-xl font-semibold mb-2">Lợi Ích Của Việc Tập Thể Dục Hàng Ngày</h3>
+                        <p class="text-gray-600 mb-4">Tập thể dục đều đặn không chỉ giúp bạn giữ gìn sức khỏe mà còn cải
+                            thiện tâm trạng và tinh thần.</p>
+                    </div>
+                    <a href="#read-more"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 mt-4 self-start">Đọc
+                        thêm</a>
+                </div>
+                <!-- Blog Post 3 -->
+                <div class="bg-white p-6 shadow-lg rounded-lg flex flex-col justify-between">
+                    <div>
+                        <img src="public/assets/image/blog3.jpg" alt="Blog Image 3"
+                            class="w-full h-64 object-cover rounded-lg mb-4">
+                        <div class="text-sm text-gray-600 mb-2">22 tháng 8, 2019 | Admin | 2 bình luận</div>
+                        <h3 class="text-xl font-semibold mb-2">Chế Độ Dinh Dưỡng Hợp Lý</h3>
+                        <p class="text-gray-600 mb-4">Một chế độ dinh dưỡng hợp lý sẽ giúp bạn duy trì cơ thể khỏe mạnh
+                            và cung cấp đủ năng lượng cho các hoạt động hàng ngày.</p>
+                    </div>
+                    <a href="#read-more"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 mt-4 self-start">Đọc
+                        thêm</a>
+                </div>
+                <!-- Blog Post 4 -->
+                <div class="bg-white p-6 shadow-lg rounded-lg flex flex-col justify-between">
+                    <div>
+                        <img src="public/assets/image/blog4.jpg" alt="Blog Image 4"
+                            class="w-full h-64 object-cover rounded-lg mb-4">
+                        <div class="text-sm text-gray-600 mb-2">5 tháng 9, 2019 | Admin | 4 bình luận</div>
+                        <h3 class="text-xl font-semibold mb-2">Cách Giảm Stress Hiệu Quả</h3>
+                        <p class="text-gray-600 mb-4">Stress là một phần không thể tránh khỏi trong cuộc sống. Hãy cùng
+                            tìm hiểu những cách giúp bạn giảm stress hiệu quả.</p>
+                    </div>
+                    <a href="#read-more"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 mt-4 self-start">Đọc
+                        thêm</a>
+                </div>
+                <!-- Blog Post 5 -->
+                <div class="bg-white p-6 shadow-lg rounded-lg flex flex-col justify-between">
+                    <div>
+                        <img src="public/assets/image/blog5.jpg" alt="Blog Image 5"
+                            class="w-full h-64 object-cover rounded-lg mb-4">
+                        <div class="text-sm text-gray-600 mb-2">18 tháng 10, 2019 | Admin | 1 bình luận</div>
+                        <h3 class="text-xl font-semibold mb-2">Vai Trò Của Vitamin Trong Chế Độ Ăn Uống</h3>
+                        <p class="text-gray-600 mb-4">Vitamin là những vi chất cần thiết cho cơ thể. Hãy tìm hiểu vai
+                            trò của chúng trong chế độ ăn uống hàng ngày.</p>
+                    </div>
+                    <a href="#read-more"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 mt-4 self-start">Đọc
+                        thêm</a>
+                </div>
+                <!-- Blog Post 6 -->
+                <div class="bg-white p-6 shadow-lg rounded-lg flex flex-col justify-between">
+                    <div>
+                        <img src="public/assets/image/blog6.jpg" alt="Blog Image 6"
+                            class="w-full h-64 object-cover rounded-lg mb-4">
+                        <div class="text-sm text-gray-600 mb-2">30 tháng 11, 2019 | Admin | 6 bình luận</div>
+                        <h3 class="text-xl font-semibold mb-2">Tầm Quan Trọng Của Việc Uống Nước Đủ</h3>
+                        <p class="text-gray-600 mb-4">Uống đủ nước mỗi ngày là một phần quan trọng để duy trì sức khỏe
+                            và thể lực.</p>
+                    </div>
+                    <a href="#read-more"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 mt-4 self-start">Đọc
+                        thêm</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="contact" class="bg-white py-16 px-4">
+        <div class="container mx-auto " data-aos="zoom-out">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center">Liên Hệ</h2>
+            <p class="text-center text-gray-600 mb-12">Nếu bạn có bất kỳ câu hỏi nào, xin vui lòng liên hệ với chúng tôi
+                qua các thông tin dưới đây.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Contact Item 1 -->
+                <div class="bg-gray-100 p-6 shadow-lg rounded-lg text-center">
+                    <div class="flex justify-center items-center w-14 h-14 rounded-full bg-white mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt fa-2x text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Địa Chỉ</h3>
+                    <p class="text-gray-600">160 Tầm vu, phường Hưng Lợi, quận Ninh Kiều, Cần Thơ</p>
+                </div>
+                <!-- Contact Item 2 -->
+                <div class="bg-gray-100 p-6 shadow-lg rounded-lg text-center">
+                    <div class="flex justify-center items-center w-14 h-14 rounded-full bg-white mx-auto mb-4">
+                        <i class="fas fa-phone-alt fa-2x text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Số Điện Thoại</h3>
+                    <p class="text-gray-600">+ 1235 2355 98</p>
+                </div>
+                <!-- Contact Item 3 -->
+                <div class="bg-gray-100 p-6 shadow-lg rounded-lg text-center">
+                    <div class="flex justify-center items-center w-14 h-14 rounded-full bg-white mx-auto mb-4">
+                        <i class="fas fa-envelope fa-2x text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Địa Chỉ Email</h3>
+                    <p class="text-gray-600">info@yourwebsite.com</p>
+                </div>
+                <!-- Contact Item 4 -->
+                <div class="bg-gray-100 p-6 shadow-lg rounded-lg text-center">
+                    <div class="flex justify-center items-center w-14 h-14 rounded-full bg-white mx-auto mb-4">
+                        <i class="fas fa-globe fa-2x text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Trang Web</h3>
+                    <p class="text-gray-600">yourwebsite.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- About Us -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-4">Về DienTran</h2>
+                    <p class="text-gray-400">DienTran cam kết cung cấp dịch vụ y tế chất lượng cao, với đội ngũ bác sĩ
+                        và nhân viên tận tâm và chuyên nghiệp.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-4">Liên Kết Nhanh</h2>
+                    <ul>
+                        <li><a href="#home" class="text-gray-400 hover:text-white">Trang Chủ</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white">Giới Thiệu</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white">Dịch Vụ</a></li>
+                        <li><a href="#doctors" class="text-gray-400 hover:text-white">Bác Sĩ</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Information -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-4">Thông Tin Liên Hệ</h2>
+                    <ul>
+                        <li class="text-gray-400 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>160 Tầm vu, phường Hưng
+                            Lợi, quận Ninh Kiều, Cần Thơ</li>
+                        <li class="text-gray-400 mb-2"><i class="fas fa-phone mr-2"></i> + 1235 2355 98</li>
+                        <li class="text-gray-400 mb-2"><i class="fas fa-envelope mr-2"></i> info@DienTran.com</li>
+                        <li class="text-gray-400"><i class="fas fa-globe mr-2"></i> www.DienTran.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-400">
+                &copy; 2024 DienTran. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // JavaScript for smooth scrolling and active link highlighting
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                let target = document.querySelector(this.getAttribute('href'));
+                let navbarHeight = document.querySelector('nav').offsetHeight;
+                let position = target.offsetTop - navbarHeight;
+
+                window.scrollTo({
+                    top: position,
+                    behavior: 'smooth'
+                });
+
+                // Đóng menu nếu đang ở chế độ responsive
+                const menuItems = document.getElementById('menu-items');
+                if (window.innerWidth < 640 && !menuItems.classList.contains('hidden')) {
+                    menuItems.classList.add('max-h-0');
+                    menuItems.classList.add('hidden');
+                }
+            });
+        });
+
+        // Highlight active link on scroll
+        document.addEventListener('scroll', () => {
+            let scrollPosition = window.scrollY + document.querySelector('nav').offsetHeight; // Thêm độ cao của navbar vào vị trí cuộn
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                let section = document.querySelector(link.getAttribute('href'));
+                if (section.offsetTop <= scrollPosition && (section.offsetTop + section.offsetHeight) > scrollPosition) {
+                    document.querySelectorAll('.nav-link').forEach((link) => {
+                        link.classList.remove('active'); // Xóa class 'active' khỏi tất cả các liên kết
+                    });
+                    link.classList.add('active'); // Thêm class 'active' cho liên kết hiện tại
+                }
+            });
+        });
+
+
+        // Toggle mobile menu
+        document.getElementById('menu-button').addEventListener('click', (event) => {
+            event.stopPropagation();
+            const menuItems = document.getElementById('menu-items');
+            if (menuItems.classList.contains('hidden')) {
+                menuItems.classList.remove('hidden');
+                menuItems.style.maxHeight = menuItems.scrollHeight + "px";
+            } else {
+                menuItems.style.maxHeight = "0";
+                menuItems.addEventListener('transitionend', function handler() {
+                    menuItems.classList.add('hidden');
+                    menuItems.removeEventListener('transitionend', handler);
+                });
+            }
+        });
+
+        // Đóng menu khi nhấn ra ngoài dropdown
+        document.addEventListener('click', (event) => {
+            const menuButton = document.getElementById('menu-button');
+            const menuItems = document.getElementById('menu-items');
+            if (window.innerWidth < 640 && !menuButton.contains(event.target) && !menuItems.contains(event.target)) {
+                if (!menuItems.classList.contains('hidden')) {
+                    menuItems.style.maxHeight = "0";
+                    menuItems.addEventListener('transitionend', function handler() {
+                        menuItems.classList.add('hidden');
+                        menuItems.removeEventListener('transitionend', handler);
+                    });
+                }
+            }
+        });
+
+        // Ensure menu visibility on larger screens
+        window.addEventListener('resize', () => {
+            const menuItems = document.getElementById('menu-items');
+            if (window.innerWidth >= 640) {
+                menuItems.classList.remove('hidden', 'max-h-0');
+                menuItems.classList.add('max-h-full');
+            } else {
+                menuItems.classList.add('hidden');
+            }
+        });
+
+        // Initial check to set the correct menu state
+        if (window.innerWidth >= 640) {
+            const menuItems = document.getElementById('menu-items');
+            menuItems.classList.remove('hidden', 'max-h-0');
+            menuItems.classList.add('max-h-full');
+        }
+    </script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
